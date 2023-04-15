@@ -1,57 +1,67 @@
-import React, {useState} from 'react'
-import { useEffect } from 'react'
-import {Link, useLocation, useNavigate} from 'react-router-dom'
-import HMPLogo from '../../../imgs/HMP-logo.png'
-import './Navbar.css'
+import React, { useState } from "react";
+import { useEffect } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import HMPLogo from "../../../imgs/HMP-logo.png";
+import "./Navbar.css";
 
 function Navbar(props) {
-    const navigate = useNavigate()
-    const [isNavExpanded, setIsNavExpanded] = useState(false)
-    const location = useLocation()
-    useEffect(() => {
-      if(window.location.pathname === "/"){
-        document.getElementById("home").style.color = "var(--HMPBlue)"
-      }
-      if(window.location.pathname === "/hmpprograms"){
-        document.getElementById("hmpprograms").style.color = "var(---HMPBlue)"
-      }
-    }, [location])
-    
-    function handleClick(){
-      setIsNavExpanded(!isNavExpanded)
+  const navigate = useNavigate();
+  const [isNavExpanded, setIsNavExpanded] = useState(false);
+  const location = useLocation();
+  useEffect(() => {
+    if (window.location.pathname === "/") {
+      document.getElementById("home").style.color = "var(--HMPBlue)";
     }
+    if (window.location.pathname === "/hmpprograms") {
+      document.getElementById("hmpprograms").style.color = "var(---HMPBlue)";
+    }
+  }, [location]);
+
+  function handleClick() {
+    setIsNavExpanded(!isNavExpanded);
+  }
   return (
-    <nav className='landing-navbar'>
-        <div className="navbar-logo">
-            <img src={HMPLogo} onClick={()=>navigate('/')}/>
-        </div>
-        <div className={isNavExpanded?"navbar-menu expanded":"navbar-menu"}>
+    <nav className="landing-navbar">
+      <div className="navbar-logo">
+        <img src={HMPLogo} onClick={() => navigate("/")} />
+      </div>
+      <div className={isNavExpanded ? "navbar-menu expanded" : "navbar-menu"}>
         <ul>
           <li>
-            <Link to="/" id="home" onClick={handleClick}>Home</Link>
+            <Link to="/" id="home" onClick={handleClick}>
+              Home
+            </Link>
+          </li>
+
+          <li>
+            <Link
+              onClick={() => {
+                handleClick();
+                props.aboutusScroll();
+              }}
+              id="aboutus"
+            >
+              About Us
+            </Link>
           </li>
           <li>
-            <Link to="/hmpprograms" id="hmpprograms" onClick={handleClick}>Programs</Link>
+            <Link
+              to="/"
+              id="contactus"
+              onClick={() => {
+                handleClick();
+                props.contactusScroll();
+              }}
+            >
+              Contact Us
+            </Link>
           </li>
           <li>
-            <Link onClick={()=>{
-              handleClick()
-              props.aboutusScroll()
-            }} id="aboutus">About Us</Link>
-          </li>
-          <li>
-            <Link to="/" id="contactus" onClick={()=>{
-              handleClick()
-              props.contactusScroll()
-            }}>Contact Us</Link>
-          </li>
-          <li>
-            <button onClick={()=>navigate('/login')}>Sign in</button>
+            <button onClick={() => navigate("/login")}>Sign in</button>
           </li>
         </ul>
-        </div>
-        <button className="hamburger"
-        onClick={handleClick}>
+      </div>
+      <button className="hamburger" onClick={handleClick}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-5 w-5"
@@ -65,9 +75,8 @@ function Navbar(props) {
           />
         </svg>
       </button>
-        
     </nav>
-  )
+  );
 }
 
-export default Navbar
+export default Navbar;

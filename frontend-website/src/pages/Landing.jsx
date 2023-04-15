@@ -30,7 +30,7 @@ import about2 from "../imgs/about/about1.jpeg";
 import about3 from "../imgs/about/about4.jpeg";
 import about4 from "../imgs/about/more2.jpg";
 import about5 from "../imgs/about/5.jpg";
-
+import landingGif from "../imgs/landing.gif";
 function Landing() {
   const navigate = useNavigate();
 
@@ -87,13 +87,11 @@ function Landing() {
   return (
     <>
       <div className="landing">
-        {/* <img src={bgImage3} className="bgImage firstBgImage" alt="bgImage" /> */}
         <Navbar
           aboutusScroll={aboutusScroll}
           contactusScroll={contactusScroll}
         />
         <div className="landing-section1">
-          <div></div>
           <div className="content">
             <h1>
               Restoring <img src={fire} alt="Fire Icon" />
@@ -126,6 +124,9 @@ function Landing() {
                 </p>
               </div>
             </div>
+          </div>
+          <div>
+            <img src={landingGif} style={{ width: "90%", height: "90%" }} />
           </div>
         </div>
         {/* <div className='landing-trendingPrograms'>
