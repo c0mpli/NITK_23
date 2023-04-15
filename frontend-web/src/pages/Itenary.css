@@ -1,0 +1,21 @@
+.itenary-wrapper {
+  margin: 6rem 9rem;
+}
+.main-images {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+.main-images > .main-images-rhs {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.images-wrapper {
+  display: flex;
+}
+.i-card-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10%;
+}
