@@ -1,21 +1,41 @@
-.ServiceCardWrapper {
-  display: grid;
-  grid-template-columns: auto auto;
-  grid-template-rows: auto auto;
-  grid-template-areas:
-    "text img"
-    "desc emp";
-  width: 40%;
+.ServiceCardWrapper,
+.ServiceCardWrapper2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 90%;
   height: auto;
   padding: 1rem;
-  background: #ececec99;
   border-radius: 20px;
-  box-shadow: 0px 4px 4px 0px #00000040;
+
   cursor: pointer;
+}
+.ServiceCardWrapper {
+  background: #ececec99;
+  box-shadow: 0px 4px 4px 0px #00000010;
+}
+.cardExpanded {
+  position: absolute;
+  width: 60%;
+  height: 70vh;
+  z-index: 9;
+  left: 13rem;
+  top: 5rem;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding: 1rem;
 }
 .ServiceCardWrapper h4 {
   margin: 0;
   padding: 0;
+}
+.userWrapper {
+  display: flex;
+  justify-content: space-between;
 }
 .ServiceCardWrapper p {
   color: #99989c;

@@ -1,49 +1,55 @@
 import React, { useState } from "react";
 import "./Card.css";
-import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { motion, AnimateSharedLayout } from "framer-motion";
 import { UilTimes } from "@iconscout/react-unicons";
 import Chart from "react-apexcharts";
 
 // parent Card
+const moods = ["😍", "😭", "☹️", "😐", "😊"];
 
-const Card = (props) => {
+var random = Math.floor(Math.random() * (4 - 0 + 1)) + 0;
+const Card = (param) => {
   const [expanded, setExpanded] = useState(false);
   return (
     <AnimateSharedLayout>
       {expanded ? (
-        <ExpandedCard param={props} setExpanded={() => setExpanded(false)} />
+        <ExpandedCard param={param} setExpanded={() => setExpanded(false)} />
       ) : (
-        <CompactCard param={props} setExpanded={() => setExpanded(true)} />
+        <CompactCard param={param} setExpanded={() => setExpanded(true)} />
       )}
     </AnimateSharedLayout>
   );
 };
 
 // Compact Card
-export default function CompactCard({ param, setExpanded }) {
+function CompactCard({ param, setExpanded }) {
+  //const Png = param.png;
   return (
     <motion.div
-      className="CompactCard"
+      className="ServiceCardWrapper"
       style={{
-        background: param.color.backGround,
-        boxShadow: param.color.boxShadow,
+        backgroundColor: "#ffffff",
+        //boxShadow: "0px 3px 5px rgba(0, 0, 0, 0.);",
       }}
       layoutId="expandableCard"
-      onClick={setExpanded}
     >
-      <div className="radialBar">
-        <CircularProgressbar
-          value={param.barValue}
-          text={`${param.barValue}%`}
-        />
-        <span>{param.title}</span>
-      </div>
-      <div className="detail">
-        <Png />
-        <span>${param.value}</span>
-        <span>Last 24 hours</span>
+      <span onClick={setExpanded} className="ServiceCardWrapper2">
+        <img src={param.image} />
+
+        <div>
+          <h4>{param.title}</h4>
+          <p>{param.message}</p>
+        </div>
+        <div className="moodToday">
+          <h4>Mood today: {moods[random]}</h4>
+        </div>
+        <div className="analysis">
+          <h4>Sentimental Analysis:</h4>
+        </div>
+      </span>
+      <div className="report">
+        <button>View report</button>
       </div>
     </motion.div>
   );
@@ -106,8 +112,8 @@ function ExpandedCard({ param, setExpanded }) {
     <motion.div
       className="ExpandedCard"
       style={{
-        background: param.color.backGround,
-        boxShadow: param.color.boxShadow,
+        backgroundColor: "#e7fdcb",
+        //boxShadow: "0px 10px 20px 0px black",
       }}
       layoutId="expandableCard"
     >
@@ -122,3 +128,5 @@ function ExpandedCard({ param, setExpanded }) {
     </motion.div>
   );
 }
+
+export default Card;

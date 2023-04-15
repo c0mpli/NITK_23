@@ -5,8 +5,14 @@ import axios from "axios";
 import { AuthContext } from "../../../context/AuthContext";
 import CompactCard from "../Card/Card";
 import { useAuthContext } from "../../../hooks/useAuthContext";
+import ServiceCard from "../../ServiceCard";
+import Card from "../Card/Card";
 
 const Cards = () => {
+  const series = {
+    name: "Revenue",
+    data: [10, 100, 50, 70, 80, 30, 40],
+  };
   const { user } = useAuthContext();
   const [cardsData, setCardsData] = useState();
   function getData() {
@@ -17,7 +23,6 @@ const Cards = () => {
       })
       .then((response) => {
         setCardsData(response.data);
-        console.log(response.data);
       })
       .catch((e) => {
         console.log(e);
@@ -25,20 +30,22 @@ const Cards = () => {
   }
   useEffect(() => {
     getData();
-  }, []);
+  }, [user]);
+
   return (
     <div className="Cards">
       {cardsData?.map((card, id) => {
         console.log(card);
         return (
           <div className="parentContainer" key={id}>
-            <CompactCard
-              title={card.title}
+            <Card
+              title={card.name}
               color={card.color}
               barValue={card.barValue}
               value={card.value}
               png={card.png}
-              series={card.series}
+              series={series.data}
+              message={card.email}
             />
           </div>
         );

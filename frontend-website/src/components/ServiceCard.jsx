@@ -1,22 +1,38 @@
-import React from 'react'
-import './ServiceCard.css'
+import React, { useState } from "react";
+import "./ServiceCard.css";
+const moods = ["😍", "😭", "☹️", "😐", "😊"];
 function ServiceCard(props) {
+  var random = Math.floor(Math.random() * (4 - 0 + 1)) + 0;
+  const [isExpanded, setIsExpanded] = useState(false);
   return (
-    <div className={props.side==="right"?'ServiceCardWrapper alignRight':"ServiceCardWrapper alignLeft"}>
-        {props.side==="right"?
-        <>
-            <img src={props.image}/>
-            <h4>{props.title}</h4>
-            <div></div>
-            <p>{props.message}</p>
-        </>:
-        <> 
-            <h4>{props.title}</h4>
-            <img src={props.image}/>
-            <p>{props.message}</p>
-        </>}
+    <div
+      className={
+        isExpanded
+          ? "ServiceCardWrapper alignRight cardExpanded"
+          : "ServiceCardWrapper alignRight"
+      }
+      onClick={() => {
+        setIsExpanded(isExpanded ? false : true);
+        console.log(isExpanded);
+      }}
+    >
+      <img src={props.image} />
+
+      <div>
+        <h4>{props.title}</h4>
+        <p>{props.message}</p>
+      </div>
+      <div className="moodToday">
+        <h4>Mood today: {moods[random]}</h4>
+      </div>
+      <div className="analysis">
+        <h4>Sentimental Analysis:</h4>
+      </div>
+      <div className="report">
+        <button>View report</button>
+      </div>
     </div>
-  )
+  );
 }
 
-export default ServiceCard
+export default ServiceCard;

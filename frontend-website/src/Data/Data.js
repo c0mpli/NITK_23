@@ -51,19 +51,49 @@ export const SidebarData = [
 // Analytics Cards Data
 export const cardsData = [
   {
-    image: img1,
-    title: "Swimming Injury Prevention Program",
-    barValue: 32,
+    title: "Sales",
+    color: {
+      backGround: "red",
+      boxShadow: "0px 10px 20px 0px #e0c6f5",
+    },
+    barValue: 70,
+    value: "25,970",
+    series: [
+      {
+        name: "Sales",
+        data: [31, 40, 28, 51, 42, 109, 100],
+      },
+    ],
   },
   {
-    image: img2,
-    title: "Core and Back Fitness Program",
-    barValue: 50,
+    title: "Revenue",
+    color: {
+      backGround: "red",
+      boxShadow: "0px 10px 20px 0px #FDC0C7",
+    },
+    barValue: 80,
+    value: "14,270",
+    series: [
+      {
+        name: "Revenue",
+        data: [10, 100, 50, 70, 80, 30, 40],
+      },
+    ],
   },
   {
-    image: img3,
-    title: "ACL Rehab Stage-1 Recovery Program",
+    title: "Expenses",
+    color: {
+      backGround: "red",
+      boxShadow: "0px 10px 20px 0px #F9D59B",
+    },
     barValue: 60,
+    value: "4,270",
+    series: [
+      {
+        name: "Expenses",
+        data: [10, 25, 15, 30, 12, 15, 20],
+      },
+    ],
   },
 ];
 
