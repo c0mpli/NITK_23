@@ -39,7 +39,7 @@ function App() {
         <BrowserRouter>
           <ScrollToTop />
           <Routes>
-            <Route path="/login" element={<Dashboard />}></Route>
+            <Route path="/login" element={<Login />}></Route>
             <Route path="/signup" element={<Dashboard />}></Route>
 
             {/** verify login here first */}

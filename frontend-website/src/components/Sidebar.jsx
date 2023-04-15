@@ -15,6 +15,7 @@ const Sidebar = () => {
 
   const navigate = useNavigate();
   const { dispatch, user } = useAuthContext();
+  console.log(user.user.name);
   //console.log(JSON.stringify(user))
   //let role = user["usertype"]
   let role = localStorage.getItem("role");
@@ -47,6 +48,7 @@ const Sidebar = () => {
         <div className="logo">
           <h3>Khayaal</h3>
         </div>
+        <p>Welcome back {user?.user.name}</p>
 
         <div className="menu">
           {SidebarData.map((item, index) => {
