@@ -23,7 +23,7 @@ export function AuthContextProvider({ children }) {
       //console.log(role)
       if (user) {
         //console.log("User exists")
-        dispatch({ type: "LOGIN", payload: JSON.parse(user.user) });
+        dispatch({ type: "LOGIN", payload: JSON.parse(user) });
       }
     }
     fetchDetails();

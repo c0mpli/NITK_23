@@ -11,7 +11,7 @@ const MainDash = () => {
         <h2>Home</h2>
         <div className="search"></div>
       </div>
-      <h1>Client's analytics.</h1>
+      <h1>Patients's analytics.</h1>
       <Cards />
     </div>
   );

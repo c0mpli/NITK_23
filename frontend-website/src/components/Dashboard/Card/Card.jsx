@@ -1,48 +1,56 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Card.css";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { motion, AnimateSharedLayout } from "framer-motion";
-//import { UilTimes } from "@iconscout/react-unicons";
-import {useNavigate, Link} from 'react-router-dom'
+import { UilTimes } from "@iconscout/react-unicons";
+import Chart from "react-apexcharts";
+
 // parent Card
 
 const Card = (props) => {
+  const [expanded, setExpanded] = useState(false);
   return (
     <AnimateSharedLayout>
-        <CompactCard param={props}  />
-    
+      {expanded ? (
+        <ExpandedCard param={props} setExpanded={() => setExpanded(false)} />
+      ) : (
+        <CompactCard param={props} setExpanded={() => setExpanded(true)} />
+      )}
     </AnimateSharedLayout>
   );
 };
 
 // Compact Card
-function CompactCard({ param }) {
-  const navigate = useNavigate();
+export default function CompactCard({ param, setExpanded }) {
   return (
     <motion.div
       className="CompactCard"
       style={{
-        background:"#f6f6f6",
-        boxShadow: "1px 4px 4px 2px rgba(0, 0, 0, 0.25)",
+        background: param.color.backGround,
+        boxShadow: param.color.boxShadow,
       }}
       layoutId="expandableCard"
-      onClick={()=>{navigate('../myprograms')}}
+      onClick={setExpanded}
     >
       <div className="radialBar">
         <CircularProgressbar
           value={param.barValue}
           text={`${param.barValue}%`}
         />
+        <span>{param.title}</span>
       </div>
-        <span className="card-title">{param.title}</span>
-        <Link className="card-continue-journey">{'Continue Journey ->'}</Link>
+      <div className="detail">
+        <Png />
+        <span>${param.value}</span>
+        <span>Last 24 hours</span>
+      </div>
     </motion.div>
   );
 }
 
 // Expanded Card
-{/*function ExpandedCard({ param, setExpanded }) {
+function ExpandedCard({ param, setExpanded }) {
   const data = {
     options: {
       chart: {
@@ -106,15 +114,11 @@ function CompactCard({ param }) {
       <div style={{ alignSelf: "flex-end", cursor: "pointer", color: "white" }}>
         <UilTimes onClick={setExpanded} />
       </div>
-        <span>{param.title}</span>
+      <span>{param.title}</span>
       <div className="chartContainer">
         <Chart options={data.options} series={param.series} type="area" />
       </div>
       <span>Last 24 hours</span>
     </motion.div>
   );
-
-}*/
 }
-
-export default Card;

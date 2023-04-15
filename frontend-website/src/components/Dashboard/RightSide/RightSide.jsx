@@ -62,7 +62,7 @@ const RightSide = () => {
   return (
     <div className="RightSide">
       <div>
-        <h3>Client's Mood</h3>
+        <h3>Patients's Mood</h3>
         <div className="progressbars">
           {progressBarData?.map((data, index) => {
             return (
@@ -92,7 +92,7 @@ const RightSide = () => {
       </div>
 
       <div>
-        <h3>Clients requests</h3>
+        <h3>Patients requests</h3>
         <div>
           {appoinments?.map((appoinment, key) => {
             const today = new Date();
@@ -139,7 +139,7 @@ const RightSide = () => {
           <div className="add-program">
             <button
               onClick={() => {
-                navigate("../scheduleappointment");
+                navigate("../requests");
               }}
             >
               View all

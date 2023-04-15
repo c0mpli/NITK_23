@@ -42,8 +42,8 @@ export const SidebarData = [
   {
     key: 2,
     icon: UilDumbbell,
-    heading: "Your clients",
-    link: "/clients",
+    heading: "Requests",
+    link: "/requests",
     role: ["user"],
   },
 ];

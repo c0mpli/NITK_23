@@ -46,6 +46,7 @@ function App() {
 
             <Route path="/dashboard" element={<Dashboard />}></Route>
             <Route path="/myprograms" element={<MyPrograms />}></Route>
+            <Route path="/requests" element={<MyPrograms />}></Route>
             <Route path="/hmpprograms" element={<HMPPrograms />}></Route>
             <Route path="/myaccount" element={<MyAccount />}></Route>
             <Route

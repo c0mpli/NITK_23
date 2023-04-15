@@ -7,7 +7,7 @@ import { UilBars } from "@iconscout/react-unicons";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../hooks/useAuthContext";
-
+import profileImage from "../imgs/profile.png";
 const Sidebar = () => {
   const [selected, setSelected] = useState(0);
 
@@ -15,10 +15,9 @@ const Sidebar = () => {
 
   const navigate = useNavigate();
   const { dispatch, user } = useAuthContext();
-  console.log(user.user.name);
+
   //console.log(JSON.stringify(user))
   //let role = user["usertype"]
-  let role = localStorage.getItem("role");
 
   const sidebarVariants = {
     true: {
@@ -46,9 +45,24 @@ const Sidebar = () => {
       >
         {/* logo */}
         <div className="logo">
-          <h3>Khayaal</h3>
+          <h3>KHAYAAL</h3>
         </div>
-        <p>Welcome back {user?.user.name}</p>
+        <div
+          className="sidebarProfile"
+          style={{
+            display: "flex",
+            paddingLeft: "2rem",
+            alignItems: "center",
+            gap: "1rem",
+          }}
+        >
+          <img src={profileImage} style={{ width: "3rem", height: "3rem" }} />
+          <p>
+            <span style={{ color: "#bec3cc" }}>Welcome back </span>
+            <br></br>
+            {user && <b>{user?.name}</b>}
+          </p>
+        </div>
 
         <div className="menu">
           {SidebarData.map((item, index) => {
@@ -76,9 +90,6 @@ const Sidebar = () => {
           <div
             className="menuItem"
             onClick={() => {
-              localStorage.removeItem("name");
-              localStorage.removeItem("role");
-              localStorage.removeItem("token");
               localStorage.removeItem("user");
               dispatch({ type: "LOGOUT" });
               navigate("../");

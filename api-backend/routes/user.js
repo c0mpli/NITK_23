@@ -125,10 +125,11 @@ router.post("/therapistregister", async (req, res) => {
 router.post("/getuserfortherapist", async (req, res) => {
   const { email } = req.body;
   const user = await User.findOne({ email: email, role: "therapist" });
-  const clients = user.clients;
+  console.log(user);
   const usersData = [];
+  const clients = user?.clients;
   for (i in clients) {
-    const t = await User.findOne({ email: clients[i] });
+    const t = await User.findOne({ email: user?.clients[i] });
     if (t) usersData.push(t);
   }
   return res.json(usersData);
