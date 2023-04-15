@@ -1,0 +1,56 @@
+.sendMessageWrapper{
+    display: flex !important;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+}
+.sendMessageWrapper input{
+    
+    border: none;
+	padding: 0.8rem;
+    border-radius: 10px;
+	width: 60%;
+	border: 1px solid #1C1C1E7A
+}
+.sendMessageWrapper button{
+    background: linear-gradient(180deg, #013765 0%, #3386CD 100%);
+border-radius: 8px;
+	border: none;
+	padding: 0.8rem;
+    width: auto;
+	color: white;
+	cursor: pointer;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+#dark .sendMessageWrapper input{
+    background-color: var(--DarkBG);
+    border: 1px solid var(--HMPBlue);
+    color: #ECF5FC;
+}
+#dark .sendMessageWrapper input::placeholder{
+    color: #ECF5FC;
+}
+.messagesWrapper{
+    margin-left: 5%;
+}
+#dark .messagesWrapper{
+    color: #ECF5FC;
+}
+.addAdmin{
+    height: auto !important;
+    margin: 1rem;
+}
+#dark .addAdmin{
+    color: #ECF5FC;
+    background-color: var(--DarkBG);
+}
+#dark .addAdmin input{
+    background-color: var(--DarkBG);
+    border: 1px solid var(--HMPBlue);
+    color: #ECF5FC;
+}
+#dark .addAdmin input::placeholder{
+    color: #ECF5FC;
+}

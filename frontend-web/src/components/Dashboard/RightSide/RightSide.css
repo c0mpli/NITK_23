@@ -1,0 +1,193 @@
+.RightSide{
+    display: flex;
+    flex-direction: column;
+    /* padding-top: 1rem; */
+    padding-right: 5%;
+}
+
+#dark .RightSide{
+    background-color: var(--DarkBG);
+    color: #ECF5FC;
+}
+.Updates{
+    box-shadow: 0px 2px 4px rgba(119, 114, 114, 0.5);
+    background-color: #FAF4E6;
+    padding: 1rem;
+    margin-top: 2rem;
+}
+#dark .Updates{
+    background-color: #001629;
+    box-shadow: 0px 2px 4px #013765;
+}
+
+.active-programs ,.Updates{
+    width: 90%;
+    border-radius: 0.7rem;
+    gap: 0.6rem;
+    display: flex;
+    flex-direction: column;
+    font-size: 13px;
+}
+
+.active-programs{
+    margin: 0 auto;
+    gap: 0.3rem;
+    cursor: pointer; 
+}
+
+.update , .programs{
+    display: flex;
+    gap: 0.5rem;
+    width: 15rem;
+}
+
+.programs{
+    background-color:#F1F8FF;
+    padding:0.8rem;
+    border-radius: 0.7rem;
+    width: auto;
+}
+
+
+.Updates img, .programs img{
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.noti>div>span:nth-of-type(1){
+    font-weight: bold;
+}
+
+.profile{
+    display:flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    margin-top: 3rem;
+}
+.profile img{
+    width:4rem;
+    height:4rem
+}
+.profile-info{
+    display: flex;
+    flex-direction: column;
+    margin-left: 0.8rem;
+}
+.profile-info h2, .profile-info p{
+    margin: 0 !important;
+}
+.profile-info p{
+    font-size: 0.7rem;
+}
+
+.profileRectLine{
+    height: 1px;
+    width: 100%;
+    background-color: black;
+    margin: 0.1rem auto;
+}
+#dark .profileRectLine{
+    background-color: white;
+}
+
+.notificationTime{
+    font-size: 0.6rem;
+    color:#777272;
+}
+#dark .notificationTime{
+    color:#4AA9FA;
+}
+.messagesRectLine{
+    width: 95%;
+    height: 1px;
+    margin: 0.01rem auto;
+    background-color: #4AA9FA80;
+    position: relative;
+}
+
+.messagesRectLine:last-child{
+    display: none;
+}
+.add-program{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem 0;
+  }
+  .add-program button{
+    cursor: pointer;
+    height: 4rem;
+    width: 100%;
+    color: #005AA7D9;
+    font-size: 1rem;
+    font-weight: 700;
+    background: #F1F8FF;
+    opacity: 0.85;
+    border: 3px dashed #4AA9FA;
+    border-radius: 10px;
+  }
+  #dark .add-program button{
+    background: #001527;
+    border: 3px dashed #00559D;
+
+  }
+  .appointmentWrapper{
+    display: flex;
+    padding: 1rem;
+    gap:1rem;
+    justify-content: center;
+    align-items: center;
+    background-color: #FAF4E6;
+    margin-bottom: 0.5rem;
+    border-radius: 20px;
+  }
+  #dark .appointmentWrapper{
+    background-color: #001629;
+  }
+  
+  .appointmentWrapper img{
+    width: 2rem;
+    height: 2rem;
+  }
+  .appointmentWrapper h3, .appointmentWrapper p{
+    padding: 0;
+    margin: 0;
+  }
+
+@media screen and (max-width: 1200px) {
+    .RightSide{
+        justify-content: flex-start;
+        padding-top: 3rem;
+    }
+}
+
+@media screen and (max-width: 768px)
+{
+    .Updates{
+        margin-top: 0;
+        width: 76vw;
+    }
+    .RightSide{
+        width: 100%;
+        margin-top: 0;
+    }
+    .RightSide>div{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .profile{
+        display: none !important;
+    }
+    .add-program{
+        margin-bottom: 30vh;
+    }
+    .programs{
+        width: 75vw;
+    }
+    .active-programs{
+        justify-content: center;
+        align-items: center;
+    }
+}

@@ -9,6 +9,7 @@ import { useAuthContext } from "./hooks/useAuthContext";
 import Itenary from "./pages/Itenary";
 import Chat from "./components/Chat/Chat";
 import Chatroom from "./pages/Chatroom";
+import Dashboard from "./pages/Dashboard/Dashboard";
 
 function App() {
   const { user } = useAuthContext();
@@ -23,6 +24,7 @@ function App() {
           <Route path={"/login"} element={<Login />} />
           <Route path={"/itenary"} element={<Itenary />} />
           <Route path={"/chatroom"} element={<Chat />} />
+          <Route path={"/dashboard"} element={<Dashboard />} />
 
           {/* <Route path={"/connect"} element={<Connect />} /> */}
         </Routes>

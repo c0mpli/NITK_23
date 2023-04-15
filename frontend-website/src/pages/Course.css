@@ -1,0 +1,87 @@
+.courseProgressWrapper{
+    display: flex;
+    justify-content: space-between;
+    color: #005AA7;
+    max-width: 60%;
+}
+#dark .courseProgressWrapper{
+    color: #95CEFF;
+}
+.courseWrapper{
+    padding: 0 5%;
+}
+.courseWrapper h1{
+    color:#013765;
+}   
+#dark .courseWrapper h1{
+    color: #ECF5FC
+}
+.courseInputWrapper{
+    display: flex;
+    padding-left: 1rem;
+    gap:25%;
+    background-color: #ECF5FC;
+}
+#dark .courseInputWrapper{
+    background-color: #005AA7;
+    color: #ECF5FC;
+}
+.selectWrapper{
+    display: flex;
+    gap:1rem;
+    align-items: center;
+    text-align: center;
+}
+.selectWrapper select{
+    width: 4rem;
+    height: 2rem;
+    border-radius: 8px;
+    text-align: center;
+    background-color: #FFEDCB;
+    border: none;
+}
+#dark .selectWrapper select{
+    background-color: #ECF5FC;
+}
+.linksWrapper{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 70%;
+    padding-left: 1rem;
+    padding-top: 1rem;
+    gap:3rem;
+}
+.videoWrapper img{
+    width: 20rem;
+    height: 15rem;
+    border-radius: 10px;
+    margin-bottom: 0.5rem;
+}
+.videoWrapper a{
+    text-decoration: none;
+    color: #013765;
+    display: flex;
+    flex-direction: column;
+    font-size: x-large;
+}
+#dark .videoWrapper a{
+    color: #95CEFF;
+}
+@media screen and (max-width:1200px) {
+    .courseProgressWrapper{
+        max-width: 90%;
+    }
+}
+@media screen and (max-width: 765px) {
+    .courseWrapper{
+        padding: 0 3%;
+    }
+    .courseProgressWrapper{
+        display: block;
+        max-width: 100%;
+    }
+    .courseInputWrapper{
+        gap:3rem;
+    }
+}

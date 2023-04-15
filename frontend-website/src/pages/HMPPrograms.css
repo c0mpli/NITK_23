@@ -1,0 +1,30 @@
+.hmpProgramsWrapper{
+    width: auto;
+}
+#dark .hmpProgramsWrapper{
+    background-color: var(--DarkBG);
+    color: white;
+}
+.hmpProgramsHeader{
+    display: grid;
+    grid-template-columns: auto 20rem;
+    margin: 0 2rem;
+}
+.HeaderContent{
+    width: auto;
+    display: flex;
+    margin-top: 2rem;
+    align-items: center;
+    justify-content: space-between;
+}
+.mainContent{
+    align-items: start;
+    height: 100%;
+}
+/* Tablets */
+@media screen and (max-width: 1200px) {
+    .hmpProgramsHeader{
+        grid-template-columns: auto 14rem;
+        margin-top: 2rem;
+    }
+  }

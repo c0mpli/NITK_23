@@ -1,0 +1,20 @@
+.ProfileHeader{
+    padding: 0 16px;
+}
+.HeaderContent{
+    padding: 0 4rem 0 2rem;
+}
+
+#dark .ProfileHeader{
+    color: #ECF5FC;
+}
+
+@media screen and (max-width: 767px) {
+    .ProfileHeader{
+        margin-top: 3rem;
+    }
+    .HeaderContent{
+        padding: 0 3rem 0 1rem;
+    }
+    
+}

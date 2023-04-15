@@ -1,0 +1,129 @@
+.CompactCard {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border-radius: 0.7rem;
+  color: black;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  position: relative;
+  cursor: pointer;
+  text-align: center;
+}
+.CompactCard:hover {
+  box-shadow: none !important;
+}
+
+#dark .CompactCard{
+  background: #000010 !important;
+border: 1px solid #013765;
+box-shadow: 1px 4px 4px 2px #011424;
+color: #4AA9FA;
+}
+
+/* radial bar */
+.radialBar {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.CircularProgressbar {
+  width: 6rem !important;
+  overflow: visible;
+}
+.CircularProgressbar-path {
+  stroke: #3386CD 100%;
+  stroke-width: 12px !important;
+}
+.CircularProgressbar-trail {
+  stroke:#01376566;
+}
+.CircularProgressbar-text {
+  fill: var(--HMPLogoBlue) !important;
+  font-weight: 600;
+}
+
+#dark .CircularProgressbar-text{
+  fill: #FFB800 !important
+}
+#dark .CompactCard{
+box-shadow: 1px 4px 4px 2px #011424 !important;
+}
+
+.card-title {
+  align-self: center;
+  font-size: 17px;
+  font-weight: bold;
+}
+.card-continue-journey{
+    color: #3386CD;
+    font-size: 12px;
+    text-decoration: none;
+}
+#dark .card-continue-journey{
+  color: #FFB800;
+}
+
+/* sideDetail*/
+.detail {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.detail > span:nth-child(2) {
+  font-size: 22px;
+  font-weight: bold;
+}
+.detail > span:nth-child(3) {
+  font-size: 12px;
+}
+
+/* ExpandedCard */
+.ExpandedCard {
+  position: absolute;
+  width: 60%;
+  height: 70vh;
+  z-index: 9;
+  left: 13rem;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding: 1rem;
+}
+.ExpandedCard > span:nth-of-type(1) {
+  color: white;
+  font-size: 26px;
+  font-weight: bold;
+  text-shadow: 0px 0px 15px white;
+}
+.ExpandedCard > span:nth-of-type(2) {
+  color: rgb(236, 236, 236);
+  font-size: 15px;
+}
+
+.chartContainer {
+  width: 70%;
+}
+
+@media screen and (max-width: 1200px) {
+  .ExpandedCard {
+    top: 2rem;
+    height: 45vh;
+    left: 6rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .ExpandedCard {
+    top: 8rem;
+    height: 50%;
+    left: 25px;
+    width: 70%;
+  }
+}

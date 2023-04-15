@@ -1,0 +1,36 @@
+.PricingCardWrapper{
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    background-color: var(--HMPLogoBlue);
+    color: white;
+    width: 18rem;
+    border-radius: 10px;
+    height: 17rem;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction:column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.PricingCardWrapper h2{
+    color: var(--HMPLogoYellow);
+}
+.PricingCardWrapper button{
+    background-color: white;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    font-weight: 700;
+    width: 10rem;
+    height: 3rem;
+    cursor: pointer;
+}
+.PricingCardWrapper button:hover{
+    transform: scale(1.1);
+    transition: 0.3s;
+}
+.PricingCardWrapper p{
+    font-size: 0.8rem;
+}
+.PricingCardWrapper div{
+    width: 85%;
+}

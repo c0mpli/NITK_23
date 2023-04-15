@@ -1,0 +1,50 @@
+.ServiceCardWrapper{
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+    grid-template-areas: "text img"
+                         "desc emp";
+    width: 40%;
+    height: auto;
+    padding: 1rem;
+    background: #ECECEC99;
+    border-radius: 20px;
+    box-shadow: 0px 4px 4px 0px #00000040;
+
+}
+.ServiceCardWrapper h4{
+    margin: 0;
+    padding: 0;
+}
+.ServiceCardWrapper p{
+    color:#99989C;
+    font-weight: 700;
+    font-size: 0.8rem;
+    margin: 0;
+    padding: 0;
+}
+.ServiceCardWrapper img{
+    background-color: var(--HMPLogoYellow);
+    border-radius: 50%;
+    padding: 0.3rem;
+}
+
+.alignRight{
+    text-align: right;
+}
+.alignLeft{
+    text-align: left;
+}
+@media screen and (max-width:1200px){
+    .ServiceCardWrapper{
+        margin: 0 auto;
+    }
+}
+
+@media screen and (max-width: 765px) {
+    .ServiceCardWrapper{
+        width: 80%;
+        justify-content: center;
+        align-items: center;
+    }
+}
