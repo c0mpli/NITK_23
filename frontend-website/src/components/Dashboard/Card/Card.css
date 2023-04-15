@@ -74,6 +74,12 @@
   padding: 1rem;
   background-color: var(--HMPBlue) !important;
 }
+.report > button {
+  border: none;
+  border-radius: 20px;
+  margin-left: 1rem;
+  padding: 0.5rem;
+}
 .ExpandedCard > span:nth-of-type(1) {
   color: white;
   font-size: 26px;
