@@ -1,78 +1,86 @@
 :root {
-  --yellow: linear-gradient(180deg, #F8D49A -146.42%, #FAD79D -46.42%);
+  --yellow: linear-gradient(180deg, #f8d49a -146.42%, #fad79d -46.42%);
   --orange: #fca61f;
   --black: #242d49;
   --gray: #788097;
-  --purple: linear-gradient(180deg, #BB67FF 0%, #C484F3 100%);
-  --pink: #FF919D;
-  --glass: rgba(255, 255, 255, 0.54);
+  --purple: linear-gradient(180deg, #bb67ff 0%, #c484f3 100%);
+  --pink: #ff919d;
+  --glass: #fcfbfc;
   --boxShadow: 0px 19px 60px rgb(0 0 0 / 8%);
   --smboxShadow: -79px 51px 60px rgba(0, 0, 0, 0.08);
 
-
   --HMPLogoBlue: #013765;
-  --HMPLogoGrey: #8B8A8F;
-  --HMPLogoYellow: #FDCE02;
-  --HMPOffWhite: #F3F3F4;
-  --HMPOffWhiteCircle:#F3F3F466;
-  --HMPBlue:#0062B5;
-  --HMPSideBarIcons:#013765;
-  --HMPLightBlue:#B8DDFC80;
-  --DarkBG:#000010;
-  
+  --HMPLogoGrey: #8b8a8f;
+  --HMPLogoYellow: #fdce02;
+  --HMPOffWhite: #f3f3f4;
+  --HMPOffWhiteCircle: #f3f3f466;
+  --HMPBlue: #0277fc;
+  --HMPSideBarIcons: #b3b7c2;
+  --HMPLightBlue: #b8ddfc80;
+  --DarkBG: #000010;
 }
-
-.App{
+body,
+html {
+  margin: 0;
+  padding: 0;
+}
+.App {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Inter', sans-serif;
+  font-family: "Poppins", sans-serif;
   width: 100%;
+  background: var(--glass);
+
   height: 100%;
 }
 
-.AppGlass,.AppGlass2,.AppGlass3 {
+.AppGlass,
+.AppGlass2,
+.AppGlass3 {
   display: grid;
   height: auto;
   width: 100%;
   background: var(--glass);
-  grid-template-columns: 13rem auto 20rem;
+  grid-template-columns: 20rem auto 24rem;
   overflow-x: hidden;
 }
-.AppGlass2{
-  grid-template-columns: 13rem auto;
+.AppGlass2 {
+  grid-template-columns: 20rem auto;
 }
-.AppGlass3{
+.AppGlass3 {
   grid-template-columns: auto 20rem;
 }
 
-#dark .AppGlass,#dark .AppGlass2,#dark .AppGlass3,#dark .App{
-  background-color:#000010;
+#dark .AppGlass,
+#dark .AppGlass2,
+#dark .AppGlass3,
+#dark .App {
+  background-color: #000010;
 }
 
-
-
-
 @media screen and (max-width: 1200px) {
-  .AppGlass{
+  .AppGlass {
     grid-template-columns: 10% 50% auto;
     overflow-y: scroll;
-  } 
-  .AppGlass2{
+  }
+  .AppGlass2 {
     grid-template-columns: 10% auto;
     overflow-y: scroll;
-
-  } 
-  .AppGlass2::-webkit-scrollbar,.AppGlass3::-webkit-scrollbar{
+  }
+  .AppGlass2::-webkit-scrollbar,
+  .AppGlass3::-webkit-scrollbar {
     display: none;
   }
-  .AppGlass3{
+  .AppGlass3 {
     overflow-y: scroll;
-  } 
+  }
 }
 
 @media screen and (max-width: 768px) {
-  .AppGlass,.AppGlass2,.AppGlass3{
+  .AppGlass,
+  .AppGlass2,
+  .AppGlass3 {
     grid-template-columns: 1fr;
-  } 
+  }
 }

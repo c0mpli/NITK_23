@@ -1,20 +1,23 @@
 .sidebar {
-  background-color: #F6F6F9;
+  background-color: #fff;
   display: flex;
   flex-direction: column;
   position: relative;
   padding-top: 4rem;
   transition: all 300ms ease;
   height: 100vh;
-  padding-bottom: 10rem;  
-} 
+  padding-bottom: 10rem;
+  margin-left: 1.2rem;
+  border-radius: 30px;
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.1);
+  margin-top: 1.2rem;
+}
 
-
-#dark .sidebar{
-  background-color: #15151F;
+#dark .sidebar {
+  background-color: #15151f;
 }
 /* logo */
-.bars{
+.bars {
   display: none;
 }
 
@@ -29,13 +32,11 @@
   height: 4%;
 }
 
-
 .logo > img {
   width: 8rem;
   height: 4rem;
   cursor: pointer;
 }
-
 
 /* menu */
 .menu {
@@ -55,9 +56,8 @@
   border-radius: 0.7rem;
   font-size: 14px;
 }
-.menuItem a{
+.menuItem a {
   text-decoration: none;
-  
 }
 .menuItem:hover {
   cursor: pointer;
@@ -66,84 +66,85 @@
 .menu .menuItem:last-child {
   bottom: 5vh;
   width: 100%;
-  position:fixed
+  position: fixed;
 }
-.menuItem svg{
-  fill:var(--HMPSideBarIcons);
+.menuItem svg {
+  fill: var(--HMPSideBarIcons);
 }
-.menuItem span{
-  color: var(--HMPBlue);
+.menuItem span {
+  color: black;
+  font-weight: 300;
 }
 
-#dark .menuItem span{
-  color: #95CEFF;
+#dark .menuItem span {
+  color: #95ceff;
 }
-#dark .menuItem svg{
-  fill: #95CEFF;
+#dark .menuItem svg {
+  fill: #95ceff;
 }
 .active {
-  background: var(--HMPLightBlue);
+  background: var(--HMPBlue);
   margin-left: 0;
+  margin: 0 8%;
+  border-radius: 30px !important;
+  height: 50px !important;
+  padding: 0 1rem;
 }
-#dark .active{
+.active > span {
+  color: #fff !important;
+}
+.active > svg {
+  fill: #fff !important;
+}
+#dark .active {
   background: rgba(40, 72, 99, 0.5);
 }
 
-.active::before {
-  content: "";
-  width: 8px;
-  height: 100%;
-  background: var(--HMPBlue);
-  margin-right: calc(1rem - 8px);
-}
-
-
 /* Tablets */
 @media screen and (max-width: 1200px) {
-  .menuItem span{
+  .menuItem span {
     display: none;
   }
-  .logo{
+  .logo {
     display: none;
   }
 }
 
 @media screen and (max-width: 768px) {
-  .sidebar{
+  .sidebar {
     position: fixed;
     z-index: 9;
     width: 55%;
     padding-right: 1rem;
     height: 100%;
   }
-  .menuItem>span{
+  .menuItem > span {
     display: block;
   }
-  .logo{
+  .logo {
     display: flex;
   }
-  
+
   .menu .menuItem:last-child {
     position: relative;
     margin-top: 6rem;
   }
-  .bars{
+  .bars {
     display: flex;
     position: fixed;
     top: 2rem;
-    left:60%;
-    background-color:var(--HMPBlue);
+    left: 60%;
+    background-color: var(--HMPBlue);
     color: white;
-    padding:10px;
+    padding: 10px;
     border-radius: 10px;
     z-index: 9;
   }
-  #dark .bars{
-    background-color: #FFB800;
+  #dark .bars {
+    background-color: #ffb800;
     color: black;
   }
-  .close{
+  .close {
     left: -60%;
   }
 }
-
