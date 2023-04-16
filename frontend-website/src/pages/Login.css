@@ -17,6 +17,11 @@
   height: 100%;
   color: black;
 }
+.login-yes {
+  border: 1px solid black !important;
+  justify-content: center;
+  align-items: center;
+}
 .login-form input {
   border: none;
   padding: 0.8rem;
@@ -42,7 +47,7 @@
   margin-bottom: 10vh;
 }
 .navbar img {
-  width: 9rem;
+  width: 7rem;
   height: 3.8rem;
   cursor: pointer;
 }

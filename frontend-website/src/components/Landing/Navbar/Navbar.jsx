@@ -24,6 +24,7 @@ function Navbar(props) {
     <nav className="landing-navbar">
       <div className="navbar-logo">
         <img src={HMPLogo} onClick={() => navigate("/")} />
+        <h1>Khayaal</h1>
       </div>
       <div className={isNavExpanded ? "navbar-menu expanded" : "navbar-menu"}>
         <ul>

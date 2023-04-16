@@ -47,14 +47,17 @@ function Login() {
     //alert(email + password)
   }
   return (
-    <div className="login-wrapper">
+    <div className="login-wrapper ">
       <nav className="navbar">
-        <img src={logo} onClick={() => navigate("../")} alt="Logo" />
+        <div className="navbar-logo">
+          <img src={logo} onClick={() => navigate("/")} />
+          <h1>Khayaal</h1>
+        </div>
         <div className="navbar-buttons"></div>
       </nav>
       <div className="content-wrapper">
         <div className="login-form-container">
-          <form className="login-form">
+          <form className="login-form login-yes">
             <h1>Login</h1>
             <input
               type="email"
