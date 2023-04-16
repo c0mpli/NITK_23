@@ -66,25 +66,25 @@ const Sidebar = () => {
 
         <div className="menu">
           {SidebarData.map((item, index) => {
-            //if (item.role.includes(role))
-            return (
-              <div
-                className={
-                  window.location.pathname === item.link
-                    ? "menuItem active"
-                    : "menuItem"
-                }
-                key={index}
-                onClick={() => {
-                  setSelected(item.key - 1);
-                  navigate("../" + item.link);
-                  setExpaned(false);
-                }}
-              >
-                <item.icon />
-                <span>{item.heading}</span>
-              </div>
-            );
+            if (item.role.includes(user?.role))
+              return (
+                <div
+                  className={
+                    window.location.pathname === item.link
+                      ? "menuItem active"
+                      : "menuItem"
+                  }
+                  key={index}
+                  onClick={() => {
+                    setSelected(item.key - 1);
+                    navigate("../" + item.link);
+                    setExpaned(false);
+                  }}
+                >
+                  <item.icon />
+                  <span>{item.heading}</span>
+                </div>
+              );
           })}
           {/* signoutIcon */}
           <div

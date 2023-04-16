@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import "./ServiceCard.css";
+import { useAuthContext } from "../hooks/useAuthContext";
 const moods = ["😍", "😭", "☹️", "😐", "😊"];
 function ServiceCard(props) {
+  const { user } = useAuthContext();
   var random = Math.floor(Math.random() * (4 - 0 + 1)) + 0;
   const [isExpanded, setIsExpanded] = useState(false);
   return (
@@ -28,9 +30,11 @@ function ServiceCard(props) {
       <div className="analysis">
         <h4>Sentimental Analysis:</h4>
       </div>
-      <div className="report">
-        <button>View report</button>
-      </div>
+      {user.role == "company" && (
+        <div className="report">
+          <button>View report</button>
+        </div>
+      )}
     </div>
   );
 }

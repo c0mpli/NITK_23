@@ -6,6 +6,7 @@ import axios from "axios";
 import profileIcon from "../../../imgs/img2.png";
 import calendarIcon from "../../../imgs/calendar.png";
 import ProgressBar from "@ramonak/react-progress-bar";
+import { useAuthContext } from "../../../hooks/useAuthContext";
 
 const RightSide = () => {
   const [messages, setMessages] = useState();
@@ -35,7 +36,9 @@ const RightSide = () => {
     { percent: "6%", size: 20, icon: "☹️" },
     { percent: "4%", size: 15, icon: "😭" },
   ];
+  const [name, setName] = useState();
   const navigate = useNavigate();
+  const { user } = useAuthContext();
   // axios
   //   .get("https://docwebsite.adityasurve1.repl.co/user/getmessages", {
   //     headers: { token: localStorage.getItem("token") },
@@ -62,7 +65,7 @@ const RightSide = () => {
   return (
     <div className="RightSide">
       <div>
-        <h3>Patients's Mood</h3>
+        <h3>{user?.role == "company" ? "Employee's" : "Patients's"} Mood</h3>
         <div className="progressbars">
           {progressBarData?.map((data, index) => {
             return (
@@ -90,36 +93,36 @@ const RightSide = () => {
           })}
         </div>
       </div>
-
-      <div>
-        <h3>Patients requests</h3>
+      {user?.role === "therapist" && (
         <div>
-          {appoinments?.map((appoinment, key) => {
-            const today = new Date();
+          <h3>Patients requests</h3>
+          <div>
+            {appoinments?.map((appoinment, key) => {
+              const today = new Date();
 
-            const split = appoinment.date.split("-");
-            //const tsplit = appoinment.time.split("-");
-            const date = split[split.length - 1].slice(0, 2);
-            const month = Number(split[1]);
-            const year = split[0];
-            // const time = tsplit[tsplit.length - 1].slice(3, 8);
+              const split = appoinment.date.split("-");
+              //const tsplit = appoinment.time.split("-");
+              const date = split[split.length - 1].slice(0, 2);
+              const month = Number(split[1]);
+              const year = split[0];
+              // const time = tsplit[tsplit.length - 1].slice(3, 8);
 
-            {
-              return (
-                <div key={key} className="appointmentWrapper">
-                  <img src={calendarIcon} />
-                  <div className="appointmentContent">
-                    <h3>{`${appoinment.name}`}</h3>
-                    <p>{`${appoinment.date}`}</p>
+              {
+                return (
+                  <div key={key} className="appointmentWrapper">
+                    <img src={calendarIcon} />
+                    <div className="appointmentContent">
+                      <h3>{`${appoinment.name}`}</h3>
+                      <p>{`${appoinment.date}`}</p>
+                    </div>
                   </div>
-                </div>
-              );
-            }
-            // else {
-            //   return <></>;
-            // }
-          })}
-          {/*<div className="active-programs">
+                );
+              }
+              // else {
+              //   return <></>;
+              // }
+            })}
+            {/*<div className="active-programs">
         {cardsData.map((card) => {
           return (
             <div className="programs" onClick={()=>{navigate('../myprograms')}}>
@@ -136,17 +139,35 @@ const RightSide = () => {
             );
           })}
       </div>*/}
-          <div className="add-program">
-            <button
-              onClick={() => {
-                navigate("../requests");
-              }}
-            >
-              View all
-            </button>
+            <div className="add-program">
+              <button
+                onClick={() => {
+                  navigate("../requests");
+                }}
+              >
+                View all
+              </button>
+            </div>
           </div>
         </div>
-      </div>
+      )}
+      {user?.role === "company" && (
+        <div className="login-form addAdmin">
+          <h3>Add employee</h3>
+          <input
+            type="text"
+            placeholder="Email of employee"
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
+          <button
+            value="submit"
+            //onClick={(e) => handleSubmit(e)}
+          >
+            Add
+          </button>
+        </div>
+      )}
     </div>
   );
 };

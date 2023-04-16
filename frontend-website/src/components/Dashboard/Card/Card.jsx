@@ -6,6 +6,7 @@ import { UilTimes } from "@iconscout/react-unicons";
 import Chart from "react-apexcharts";
 import axios from "axios";
 import ReactApexChart from "react-apexcharts";
+import { useAuthContext } from "../../../hooks/useAuthContext";
 // parent Card
 const moods = ["😍", "😭", "☹️", "😐", "😊"];
 
@@ -16,6 +17,7 @@ const Card = (param) => {
   const [pos, setPos] = useState();
   const [neg, setNeg] = useState();
   const [neu, setNeu] = useState();
+  const { user } = useAuthContext();
   async function getSentiment(id) {
     console.log(id);
     await axios
@@ -53,6 +55,7 @@ const Card = (param) => {
           param={param}
           setExpanded={() => setExpanded(true)}
           sentiment={sentiment}
+          user={user}
         />
       )}
     </AnimateSharedLayout>
@@ -60,7 +63,7 @@ const Card = (param) => {
 };
 
 // Compact Card
-function CompactCard({ param, setExpanded, sentiment }) {
+function CompactCard({ param, setExpanded, sentiment, user }) {
   //const Png = param.png;
   return (
     <motion.div
@@ -94,9 +97,11 @@ function CompactCard({ param, setExpanded, sentiment }) {
           </h4>
         </div>
       </span>
-      <div className="report">
-        <button>View report</button>
-      </div>
+      {user?.role != "company" && (
+        <div className="report">
+          <button>View report</button>
+        </div>
+      )}
     </motion.div>
   );
 }

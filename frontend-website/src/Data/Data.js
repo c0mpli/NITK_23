@@ -37,14 +37,14 @@ export const SidebarData = [
     icon: UilEstate,
     heading: "Dashboard",
     link: "/dashboard",
-    role: ["user"],
+    role: ["user", "therapist", "company"],
   },
   {
     key: 2,
-    icon: UilDumbbell,
+    icon: UilUsersAlt,
     heading: "Requests",
     link: "/requests",
-    role: ["user"],
+    role: ["therapist"],
   },
 ];
 
