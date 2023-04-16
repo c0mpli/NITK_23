@@ -82,7 +82,16 @@ function CompactCard({ param, setExpanded, sentiment }) {
           <h4>Mood today: {moods[random]}</h4>
         </div>
         <div className="analysis">
-          <h4>Sentiment Analysis: {sentiment}</h4>
+          <h4>
+            Sentiment Analysis:{" "}
+            <span
+              style={
+                sentiment === "positive" ? { color: "green" } : { color: "red" }
+              }
+            >
+              {sentiment}
+            </span>
+          </h4>
         </div>
       </span>
       <div className="report">
