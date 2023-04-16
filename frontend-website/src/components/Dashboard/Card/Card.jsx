@@ -1,29 +1,66 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Card.css";
 import "react-circular-progressbar/dist/styles.css";
 import { motion, AnimateSharedLayout } from "framer-motion";
 import { UilTimes } from "@iconscout/react-unicons";
 import Chart from "react-apexcharts";
-
+import axios from "axios";
+import ReactApexChart from "react-apexcharts";
 // parent Card
 const moods = ["😍", "😭", "☹️", "😐", "😊"];
 
 var random = Math.floor(Math.random() * (4 - 0 + 1)) + 0;
 const Card = (param) => {
   const [expanded, setExpanded] = useState(false);
+  const [sentiment, setSentiment] = useState();
+  const [pos, setPos] = useState();
+  const [neg, setNeg] = useState();
+  const [neu, setNeu] = useState();
+  async function getSentiment(id) {
+    console.log(id);
+    await axios
+      .post(`${process.env.REACT_APP_DB_URL}/user/getsentiment`, {
+        userid: id,
+      })
+      .then((res) => {
+        setSentiment(res.data[0]);
+        setPos(res.data[1]);
+        setNeg(res.data[2]);
+        setNeu(res.data[3]);
+
+        console.log(res.data);
+        //return res.data;
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }
+  useEffect(() => {
+    getSentiment(param.id);
+  }, []);
   return (
     <AnimateSharedLayout>
       {expanded ? (
-        <ExpandedCard param={param} setExpanded={() => setExpanded(false)} />
+        <ExpandedCard
+          param={param}
+          setExpanded={() => setExpanded(false)}
+          pos={Math.round(pos * 100)}
+          neu={Math.round(neu * 100)}
+          neg={Math.round(neg * 100)}
+        />
       ) : (
-        <CompactCard param={param} setExpanded={() => setExpanded(true)} />
+        <CompactCard
+          param={param}
+          setExpanded={() => setExpanded(true)}
+          sentiment={sentiment}
+        />
       )}
     </AnimateSharedLayout>
   );
 };
 
 // Compact Card
-function CompactCard({ param, setExpanded }) {
+function CompactCard({ param, setExpanded, sentiment }) {
   //const Png = param.png;
   return (
     <motion.div
@@ -45,7 +82,7 @@ function CompactCard({ param, setExpanded }) {
           <h4>Mood today: {moods[random]}</h4>
         </div>
         <div className="analysis">
-          <h4>Sentimental Analysis:</h4>
+          <h4>Sentiment Analysis: {sentiment}</h4>
         </div>
       </span>
       <div className="report">
@@ -56,54 +93,48 @@ function CompactCard({ param, setExpanded }) {
 }
 
 // Expanded Card
-function ExpandedCard({ param, setExpanded }) {
+function ExpandedCard({ param, setExpanded, pos, neu, neg }) {
   const data = {
+    series: [
+      {
+        data: [pos, neu, neg],
+      },
+    ],
     options: {
       chart: {
-        type: "area",
-        height: "auto",
+        height: 350,
+        type: "bar",
+        events: {
+          click: function (chart, w, e) {
+            // console.log(chart, w, e)
+          },
+        },
       },
-
-      dropShadow: {
-        enabled: false,
-        enabledOnSeries: undefined,
-        top: 0,
-        left: 0,
-        blur: 3,
-        color: "#000",
-        opacity: 0.35,
-      },
-
-      fill: {
-        colors: ["#fff"],
-        type: "gradient",
+      plotOptions: {
+        bar: {
+          columnWidth: "45%",
+          distributed: true,
+        },
       },
       dataLabels: {
         enabled: false,
       },
-      stroke: {
-        curve: "smooth",
-        colors: ["white"],
-      },
-      tooltip: {
-        x: {
-          format: "dd/MM/yy HH:mm",
-        },
-      },
-      grid: {
-        show: true,
+      legend: {
+        show: false,
       },
       xaxis: {
-        type: "datetime",
         categories: [
-          "2018-09-19T00:00:00.000Z",
-          "2018-09-19T01:30:00.000Z",
-          "2018-09-19T02:30:00.000Z",
-          "2018-09-19T03:30:00.000Z",
-          "2018-09-19T04:30:00.000Z",
-          "2018-09-19T05:30:00.000Z",
-          "2018-09-19T06:30:00.000Z",
+          ["Percent", "Positive"],
+          ["Percent", "Negative"],
+          ["Percent", "Neutral"],
         ],
+        labels: {
+          style: {
+            colors: "#000",
+            fontWeight: "600",
+            fontSize: "12px",
+          },
+        },
       },
     },
   };
@@ -112,19 +143,24 @@ function ExpandedCard({ param, setExpanded }) {
     <motion.div
       className="ExpandedCard"
       style={{
-        backgroundColor: "#e7fdcb",
+        backgroundColor: "#fff",
         //boxShadow: "0px 10px 20px 0px black",
       }}
       layoutId="expandableCard"
     >
-      <div style={{ alignSelf: "flex-end", cursor: "pointer", color: "white" }}>
+      <div style={{ alignSelf: "flex-end", cursor: "pointer", color: "black" }}>
         <UilTimes onClick={setExpanded} />
       </div>
       <span>{param.title}</span>
       <div className="chartContainer">
-        <Chart options={data.options} series={param.series} type="area" />
+        <ReactApexChart
+          options={data.options}
+          series={data.series}
+          type="bar"
+          height={350}
+        />
       </div>
-      <span>Last 24 hours</span>
+      <span style={{ color: "black" }}>Last 24 hours</span>
     </motion.div>
   );
 }

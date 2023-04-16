@@ -16,7 +16,6 @@ const Cards = () => {
   const { user } = useAuthContext();
   const [cardsData, setCardsData] = useState();
   function getData() {
-    console.log(user);
     axios
       .post(`${process.env.REACT_APP_DB_URL}/user/getuserfortherapist`, {
         email: user?.email,
@@ -28,6 +27,7 @@ const Cards = () => {
         console.log(e);
       });
   }
+
   useEffect(() => {
     getData();
   }, [user]);
@@ -35,11 +35,12 @@ const Cards = () => {
   return (
     <div className="Cards">
       {cardsData?.map((card, id) => {
-        console.log(card);
+        //console.log(card);
         return (
           <div className="parentContainer" key={id}>
             <Card
               title={card.name}
+              id={card._id}
               color={card.color}
               barValue={card.barValue}
               value={card.value}
